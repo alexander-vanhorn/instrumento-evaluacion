@@ -10,14 +10,18 @@ df = pd.read_csv(data_url)
 # Inicializa la aplicación Dash
 app = dash.Dash(__name__)
 
+# Define una paleta de colores personalizada
+colores = px.colors.qualitative.Set3 
+
 # Define la disposición de la aplicación
 app.layout = html.Div([
-    html.H1("Distribución de Respuestas"),
+    html.H1("Instrumento de evaluación de calidad de software"),
     dcc.Graph(
         id='pie-chart',
         figure=px.pie(df, names='MD;A;ND;D;TD;NA', title='Distribución de Respuestas')
     )
 ])
+
 
 if __name__ == '__main__':
     app.run_server(debug=True)
