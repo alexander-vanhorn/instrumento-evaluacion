@@ -1,0 +1,28 @@
+form{
+    margin: 0 auto; 
+    width:70%;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    background-color:azure;
+}
+
+body{
+    background-image: url("../images/software-1-e1550080087611-800x400.jpg");
+}
+
+
+th, td {
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 30px;
+    padding-right: 40px;
+}
+
+.submit{
+    text-align: center;
+}
+
+footer{
+    text-align: center;
+}
