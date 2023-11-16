@@ -12,19 +12,32 @@ include("../config/conexion.php");
             $institucion = $_REQUEST['institucion'];
             $rol_participante = $_REQUEST['rol_participante'];
 
+            /*
+            $pregunta_1 = $_REQUEST['Pregunta_1'];
+            $pregunta_2 = $_REQUEST['Pregunta_2'];
+            $pregunta_3 = $_REQUEST['Pregunta_3'];
+
+            for ($i = 1; $i <= 63; $i++) {
+                $pregunta = $_REQUEST['Pregunta_' . $i];
+                // Puedes hacer lo que necesites con la variable $pregunta aquí
+                // Por ejemplo, almacenarla en un array o procesarla de alguna manera
+                // Ejemplo de almacenamiento en un array:
+                $respuestas["Pregunta_" . $i] = $pregunta;
+            }
+            */
+
             $parId  = 1;
             $monto  =200;
             $descuento  = 0;
 
             $datos = new Participante($nombre,$apellido,$email,$cedula,$institucion,$rol_participante);
-           $nuevo_dato = new Inscripcion($parId,$monto,$descuento);
+          
 
             $insercion = $conn->prepare("INSERT INTO participantes (nombre, apellido, correo, tipo_doc, institucion, rol) values (:nombre, :apellido, :email, :cedula, :institucion, :rol_participante)");
-            $insercion2 = $conn->prepare("INSERT INTO inscripciones (part_id, monto, descuento) values (:parId, :monto, :descuento)");
-
+            
             try{
                 $insercion->execute((array)$datos);
-                $insercion2->execute((array)$nuevo_dato);
+                
                 echo '<meta http-equiv="refresh" content="0; url=../secciones/confirmacion.php">';  
                 }
                 //$msg="Asistencia registrada exitosamente.";

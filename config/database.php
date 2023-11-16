@@ -2,7 +2,7 @@
     $server = 'localhost';
     $username = 'root';
     $password ='';
-    $database = 'congreso';
+    $database = 'herramienta_evaluacion';
 
     try{
         $conn = new PDO("mysql:host=$server;dbname=$database;",$username,$password);
