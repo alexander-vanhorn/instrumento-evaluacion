@@ -1,589 +1,548 @@
---Crea la base de datos
-create database herramienta_evalaucion
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 21-11-2023 a las 16:07:33
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 8.1.6
 
---Usa la base de datos
-use herramienta_evaluacion
-
---Se crea la tabla donde se va a almacenar las respuestas de las preguntas
-create table encuesta (
-	fecha date default getdate(), --En MySql ser�a now() en vez de getdate().
-	idEvaluador varchar(25)
-		constraint pk_idEvaluador primary key,
-	tipoSoftware varchar(25) not null,
-	rolEvaluador varchar (255) not null,
-	--1
-	--1.1
-	Pregunta_1 varchar(25) not null,
-	Pregunta_2 varchar(25) not null,
-	--1.2
-	Pregunta_3 varchar(25) not null,
-	Pregunta_4 varchar(25) not null,
-	--1.3
-	Pregunta_5 varchar(25) not null,
-	Pregunta_6 varchar(25) not null,
-	--2
-	--2.1
-	Pregunta_7 varchar(25) not null,
-	Pregunta_8 varchar(25) not null,
-	--2.2
-	Pregunta_9 varchar(25) not null,
-	Pregunta_10 varchar(25) not null,
-	--2.3
-	Pregunta_11 varchar(25) not null,
-	Pregunta_12 varchar(25) not null,
-	--3
-	--3.1
-	Pregunta_13 varchar(25) not null,
-	Pregunta_14 varchar(25) not null,
-	--3.2
-	Pregunta_15 varchar(25) not null,
-	Pregunta_16 varchar(25) not null,
-	--4
-	--4.1
-	Pregunta_17 varchar(25) not null,
-	Pregunta_18 varchar(25) not null,
-	--4.2
-	Pregunta_19 varchar(25) not null,
-	Pregunta_20 varchar(25) not null,
-	--4.3
-	Pregunta_21 varchar(25) not null,
-	Pregunta_22 varchar(25) not null,
-	--4.4
-	Pregunta_23 varchar(25) not null,
-	Pregunta_24 varchar(25) not null,
-	--4.5
-	Pregunta_25 varchar(25) not null,
-	--4.6
-	Pregunta_26 varchar(25) not null,
-	--5
-	--5.1
-	Pregunta_27 varchar(25) not null,
-	Pregunta_28 varchar(25) not null,
-	--5.2
-	Pregunta_29 varchar(25) not null,
-	Pregunta_30 varchar(25) not null,
-	--5.3
-	Pregunta_31 varchar(25) not null,
-	Pregunta_32 varchar(25) not null,
-	--5.4
-	Pregunta_33 varchar(25) not null,
-	Pregunta_34 varchar(25) not null,
-	--6
-	--6.1
-	Pregunta_35 varchar(25) not null,
-	Pregunta_36 varchar(25) not null,
-	--6.2
-	Pregunta_37 varchar(25) not null,
-	Pregunta_38 varchar(25) not null,
-	--6.3
-	Pregunta_39 varchar(25) not null,
-	Pregunta_40 varchar(25) not null,
-	--6.4
-	Pregunta_41 varchar(25) not null,
-	Pregunta_42 varchar(25) not null,
-	--6.5
-	Pregunta_43 varchar(25) not null,
-	Pregunta_44 varchar(25) not null,
-	--7
-	--7.1
-	Pregunta_45 varchar(25) not null,
-	Pregunta_46 varchar(25) not null,
-	--7.2
-	Pregunta_47 varchar(25) not null,
-	Pregunta_48 varchar(25) not null,
-	--7.3
-	Pregunta_49 varchar(25) not null,
-	Pregunta_50 varchar(25) not null,
-	--7.4
-	Pregunta_51 varchar(25) not null,
-	Pregunta_52 varchar(25) not null,
-	--7.5
-	Pregunta_53 varchar(25) not null,
-	Pregunta_54 varchar(25) not null,
-	Pregunta_55 varchar(25) not null,
-	--8
-	--8.1
-	Pregunta_56 varchar(25) not null,
-	Pregunta_57 varchar(25) not null,
-	--8.2
-	Pregunta_58 varchar(25) not null,
-	Pregunta_59 varchar(25) not null,
-	--8.3
-	Pregunta_60 varchar(25) not null,
-	Pregunta_61 varchar(25) not null,
-	Pregunta_62 varchar(25) not null,
-	Pregunta_63 varchar(25) not null
-)
-
---Se crea la tabla donde se va a almacenar en conteo total de MD, A, ND, D, TD y NA
-create table escala
-(
-	MD int,
-	A int, 
-	ND int, 
-	D int, 
-	TD int, 
-	NA int
-)
-
---Se crean las tablas donde se va a almacenar en conteo total de MD, A, ND, D, TD y NA por cada caracter�stica 
---subcaracter�sticas
-
-create table AdecuacionFuncional
-(
-	MD int,
-	A int, 
-	ND int, 
-	D int, 
-	TD int, 
-	NA int
-)
-
-create table EficienciaDesempe�o
-(
-	MD int,
-	A int, 
-	ND int, 
-	D int, 
-	TD int, 
-	NA int
-)
-
-create table Compatibilidad
-(
-	MD int,
-	A int, 
-	ND int, 
-	D int, 
-	TD int, 
-	NA int
-)
-
-create table Usabilidad
-(
-	MD int,
-	A int, 
-	ND int, 
-	D int, 
-	TD int, 
-	NA int
-)
-
-create table Fiabilidad
-(
-	MD int,
-	A int, 
-	ND int, 
-	D int, 
-	TD int, 
-	NA int
-)
-
-create table Seguridad
-(
-	MD int,
-	A int, 
-	ND int, 
-	D int, 
-	TD int, 
-	NA int
-)
-
-create table Mantenibilidad
-(
-	MD int,
-	A int, 
-	ND int, 
-	D int, 
-	TD int, 
-	NA int
-)
-
-create table Portabilidad
-(
-	MD int,
-	A int, 
-	ND int, 
-	D int, 
-	TD int, 
-	NA int
-)
-
---Tablas para subcaracter�sticas
-create table completitud_funcional
-(
-	MD int,
-	A int, 
-	ND int, 
-	D int, 
-	TD int, 
-	NA int
-)
-create table correcion_funcional
-(
-	MD int,
-	A int, 
-	ND int, 
-	D int, 
-	TD int, 
-	NA int
-)
-create table pertinencia_funcional
-(
-	MD int,
-	A int, 
-	ND int, 
-	D int, 
-	TD int, 
-	NA int
-)
-create table comportamiento_temporal
-(
-	MD int,
-	A int, 
-	ND int, 
-	D int, 
-	TD int, 
-	NA int
-)
-create table utilizacion_recursos
-(
-	MD int,
-	A int, 
-	ND int, 
-	D int, 
-	TD int, 
-	NA int
-)
-
-create table capacidad
-(
-	MD int,
-	A int, 
-	ND int, 
-	D int, 
-	TD int, 
-	NA int
-)
-create table coexistencia
-(
-	MD int,
-	A int, 
-	ND int, 
-	D int, 
-	TD int, 
-	NA int
-)
-create table interoperabilidad
-(
-	MD int,
-	A int, 
-	ND int, 
-	D int, 
-	TD int, 
-	NA int
-)
-create table reconocimiento_adecuacion
-(
-	MD int,
-	A int, 
-	ND int, 
-	D int, 
-	TD int, 
-	NA int
-)
-create table aprendizabilidad
-(
-	MD int,
-	A int, 
-	ND int, 
-	D int, 
-	TD int, 
-	NA int
-)
-create table operabilidad
-(
-	MD int,
-	A int, 
-	ND int, 
-	D int, 
-	TD int, 
-	NA int
-)
-create table proteccion_errores_usuario
-(
-	MD int,
-	A int, 
-	ND int, 
-	D int, 
-	TD int, 
-	NA int
-)
-create table estetica_interfaz_usuario
-(
-	MD int,
-	A int, 
-	ND int, 
-	D int, 
-	TD int, 
-	NA int
-)
-create table accesibilidad
-(
-	MD int,
-	A int, 
-	ND int, 
-	D int, 
-	TD int, 
-	NA int
-)
-create table madurez
-(
-	MD int,
-	A int, 
-	ND int, 
-	D int, 
-	TD int, 
-	NA int
-)
-create table disponibilidad
-(
-	MD int,
-	A int, 
-	ND int, 
-	D int, 
-	TD int, 
-	NA int
-)
-create table tolerancia_fallos
-(
-	MD int,
-	A int, 
-	ND int, 
-	D int, 
-	TD int, 
-	NA int
-)
-create table capacidad_recuperacion
-(
-	MD int,
-	A int, 
-	ND int, 
-	D int, 
-	TD int, 
-	NA int
-)
-create table confidencialidad
-(
-	MD int,
-	A int, 
-	ND int, 
-	D int, 
-	TD int, 
-	NA int
-)
-create table integridad
-(
-	MD int,
-	A int, 
-	ND int, 
-	D int, 
-	TD int, 
-	NA int
-)
-create table no_repudio
-(
-	MD int,
-	A int, 
-	ND int, 
-	D int, 
-	TD int, 
-	NA int
-)
-create table responsabilidad
-(
-	MD int,
-	A int, 
-	ND int, 
-	D int, 
-	TD int, 
-	NA int
-)
-create table autenticidad
-(
-	MD int,
-	A int, 
-	ND int, 
-	D int, 
-	TD int, 
-	NA int
-)
-create table modularidad
-(
-	MD int,
-	A int, 
-	ND int, 
-	D int, 
-	TD int, 
-	NA int
-)
-create table reusabilidad
-(
-	MD int,
-	A int, 
-	ND int, 
-	D int, 
-	TD int, 
-	NA int
-)
-create table analizabilidad
-(
-	MD int,
-	A int, 
-	ND int, 
-	D int, 
-	TD int, 
-	NA int
-)
-create table capacidad_modificado
-(
-	MD int,
-	A int, 
-	ND int, 
-	D int, 
-	TD int, 
-	NA int
-)
-create table capacidad_probado
-(
-	MD int,
-	A int, 
-	ND int, 
-	D int, 
-	TD int, 
-	NA int
-)
-create table adaptabilidad
-(
-	MD int,
-	A int, 
-	ND int, 
-	D int, 
-	TD int, 
-	NA int
-)
-create table capacidad_instalado
-(
-	MD int,
-	A int, 
-	ND int, 
-	D int, 
-	TD int, 
-	NA int
-)
-create table capacidad_reemplazado
-(
-	MD int,
-	A int, 
-	ND int, 
-	D int, 
-	TD int, 
-	NA int
-)
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
 
 
---Se hace un insert de prueba
-insert into encuesta values ('A','A','ND','D','TD')
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
---Este es el insert oficial para toda la encuesta
-INSERT INTO encuesta(idEvaluador,tipoSoftware, rolEvaluador,
-    Pregunta_1, Pregunta_2, Pregunta_3, Pregunta_4, Pregunta_5, Pregunta_6, Pregunta_7, Pregunta_8,
-    Pregunta_9, Pregunta_10, Pregunta_11, Pregunta_12, Pregunta_13, Pregunta_14, Pregunta_15, Pregunta_16,
-    Pregunta_17, Pregunta_18, Pregunta_19, Pregunta_20, Pregunta_21, Pregunta_22, Pregunta_23, Pregunta_24,
-    Pregunta_25, Pregunta_26, Pregunta_27, Pregunta_28, Pregunta_29, Pregunta_30, Pregunta_31, Pregunta_32,
-    Pregunta_33, Pregunta_34, Pregunta_35, Pregunta_36, Pregunta_37, Pregunta_38, Pregunta_39, Pregunta_40,
-    Pregunta_41, Pregunta_42, Pregunta_43, Pregunta_44, Pregunta_45, Pregunta_46, Pregunta_47, Pregunta_48,
-    Pregunta_49, Pregunta_50, Pregunta_51, Pregunta_52, Pregunta_53, Pregunta_54, Pregunta_55, Pregunta_56,
-    Pregunta_57, Pregunta_58, Pregunta_59, Pregunta_60, Pregunta_61, Pregunta_62, Pregunta_63
-) VALUES ('EDUCATIVO','DESARROLLADOR',
-    'MD','A','ND','D','TD','NA','MD','A','ND','D','TD','NA','MD','A','ND','D','TD','NA','MD','A','ND','D',
-    'TD','NA','MD','A','ND','D','TD','NA','MD','A','ND','D','TD','NA','MD','A','ND','D','TD','NA','MD','A',
-    'ND','D','TD','NA','MD','A','ND','D','TD','NA','NA','NA'
-);
+--
+-- Base de datos: `herramienta_evaluacion`
+--
 
+-- --------------------------------------------------------
 
---Se hace un insert donde se inicializa la tabla escala en cero. 
---Esto se hace porque posteriormente en el trigger, se actualizara la tabla.
-insert into escala values (0,0,0,0,0,0)
-insert into AdecuacionFuncional values (0,0,0,0,0,0)
-insert into EficienciaDesempe�o values (0,0,0,0,0,0)
-insert into Compatibilidad values (0,0,0,0,0,0)
-insert into Usabilidad values (0,0,0,0,0,0)
-insert into Fiabilidad values (0,0,0,0,0,0)
-insert into Seguridad values (0,0,0,0,0,0)
-insert into Mantenibilidad values (0,0,0,0,0,0)
-insert into Portabilidad values (0,0,0,0,0,0)
+--
+-- Estructura de tabla para la tabla `accesibilidad`
+--
 
---Subcaracter�sticas
-insert into   completitud_funcional values (0,0,0,0,0)
-insert into   correcion_funcional values (0,0,0,0,0)
-insert into   pertinencia_funcional values (0,0,0,0,0)
-insert into   comportamiento_temporal values (0,0,0,0,0)
-insert into   utilizacion_recursos values (0,0,0,0,0)
-insert into   capacidad values (0,0,0,0,0)
-insert into   coexistencia values (0,0,0,0,0)
-insert into   interoperabilidad values (0,0,0,0,0)
-insert into   reconocimiento_adecuacion values (0,0,0,0,0)
-insert into   aprendizabilidad values (0,0,0,0,0)
-insert into   operabilidad values (0,0,0,0,0)
-insert into   proteccion_errores_usuario values (0,0,0,0,0)
-insert into   estetica_interfaz_usuario values (0,0,0,0,0)
-insert into   accesibilidad values (0,0,0,0,0)
-insert into   madurez values (0,0,0,0,0)
-insert into   disponibilidad values (0,0,0,0,0)
-insert into   tolerancia_fallos values (0,0,0,0,0)
-insert into   capacidad_recuperacion  values (0,0,0,0,0)
-insert into   Confidencialidad values (0,0,0,0,0)
-insert into   integridad values (0,0,0,0,0)
-insert into   no_repudio values (0,0,0,0,0)
-insert into   responsabilidad values (0,0,0,0,0)
-insert into   autenticidad values (0,0,0,0,0)
-insert into   modularidad values (0,0,0,0,0)
-insert into   reusabilidad values (0,0,0,0,0)
-insert into   analizabilidad values (0,0,0,0,0)
-insert into   capacidad_modificado values (0,0,0,0,0)
-insert into   capacidad_probado values (0,0,0,0,0)
-insert into   adaptabilidad values (0,0,0,0,0)
-insert into   capacidad_instalado  values (0,0,0,0,0)
-insert into   capacidad_reemplazado values (0,0,0,0,0)
+CREATE TABLE `accesibilidad` (
+  `MD` int(11) DEFAULT NULL,
+  `A` int(11) DEFAULT NULL,
+  `ND` int(11) DEFAULT NULL,
+  `D` int(11) DEFAULT NULL,
+  `TD` int(11) DEFAULT NULL,
+  `NA` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `accesibilidad`
+--
 
---Por si se desea borrar todos los datos y comenzar desde cero
-truncate table encuesta
-truncate table escala
+INSERT INTO `accesibilidad` (`MD`, `A`, `ND`, `D`, `TD`, `NA`) VALUES
+(0, 0, 0, 0, 0, 0);
 
---Para ver las tablas
-select * from encuesta
-select * from escala
-select * from AdecuacionFuncional
-select * from EficienciaDesempe�o
-select * from Compatibilidad
-select * from Usabilidad
-select * from Fiabilidad
-select * from Seguridad
-select * from Mantenibilidad
-select * from Portabilidad
+-- --------------------------------------------------------
 
+--
+-- Estructura de tabla para la tabla `adaptabilidad`
+--
 
+CREATE TABLE `adaptabilidad` (
+  `MD` int(11) DEFAULT NULL,
+  `A` int(11) DEFAULT NULL,
+  `ND` int(11) DEFAULT NULL,
+  `D` int(11) DEFAULT NULL,
+  `TD` int(11) DEFAULT NULL,
+  `NA` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Crea o modifica el trigger que actualiza los resultados de la tabla escala
--- Este trigger contabiliza la cantidad de MD, A, ND, D, TD y NA y los
--- almacenar en conteo total de MD, A, ND, D, TD y NA
-alter trigger TablaGeneralSatisfaccion
-on encuesta
-after insert
-as
+--
+-- Volcado de datos para la tabla `adaptabilidad`
+--
 
+INSERT INTO `adaptabilidad` (`MD`, `A`, `ND`, `D`, `TD`, `NA`) VALUES
+(0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `adecuacionfuncional`
+--
+
+CREATE TABLE `adecuacionfuncional` (
+  `MD` int(11) DEFAULT NULL,
+  `A` int(11) DEFAULT NULL,
+  `ND` int(11) DEFAULT NULL,
+  `D` int(11) DEFAULT NULL,
+  `TD` int(11) DEFAULT NULL,
+  `NA` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `adecuacionfuncional`
+--
+
+INSERT INTO `adecuacionfuncional` (`MD`, `A`, `ND`, `D`, `TD`, `NA`) VALUES
+(0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `analizabilidad`
+--
+
+CREATE TABLE `analizabilidad` (
+  `MD` int(11) DEFAULT NULL,
+  `A` int(11) DEFAULT NULL,
+  `ND` int(11) DEFAULT NULL,
+  `D` int(11) DEFAULT NULL,
+  `TD` int(11) DEFAULT NULL,
+  `NA` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `analizabilidad`
+--
+
+INSERT INTO `analizabilidad` (`MD`, `A`, `ND`, `D`, `TD`, `NA`) VALUES
+(0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `aprendizabilidad`
+--
+
+CREATE TABLE `aprendizabilidad` (
+  `MD` int(11) DEFAULT NULL,
+  `A` int(11) DEFAULT NULL,
+  `ND` int(11) DEFAULT NULL,
+  `D` int(11) DEFAULT NULL,
+  `TD` int(11) DEFAULT NULL,
+  `NA` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `aprendizabilidad`
+--
+
+INSERT INTO `aprendizabilidad` (`MD`, `A`, `ND`, `D`, `TD`, `NA`) VALUES
+(0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `autenticidad`
+--
+
+CREATE TABLE `autenticidad` (
+  `MD` int(11) DEFAULT NULL,
+  `A` int(11) DEFAULT NULL,
+  `ND` int(11) DEFAULT NULL,
+  `D` int(11) DEFAULT NULL,
+  `TD` int(11) DEFAULT NULL,
+  `NA` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `autenticidad`
+--
+
+INSERT INTO `autenticidad` (`MD`, `A`, `ND`, `D`, `TD`, `NA`) VALUES
+(0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `capacidad`
+--
+
+CREATE TABLE `capacidad` (
+  `MD` int(11) DEFAULT NULL,
+  `A` int(11) DEFAULT NULL,
+  `ND` int(11) DEFAULT NULL,
+  `D` int(11) DEFAULT NULL,
+  `TD` int(11) DEFAULT NULL,
+  `NA` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `capacidad`
+--
+
+INSERT INTO `capacidad` (`MD`, `A`, `ND`, `D`, `TD`, `NA`) VALUES
+(0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `capacidad_instalado`
+--
+
+CREATE TABLE `capacidad_instalado` (
+  `MD` int(11) DEFAULT NULL,
+  `A` int(11) DEFAULT NULL,
+  `ND` int(11) DEFAULT NULL,
+  `D` int(11) DEFAULT NULL,
+  `TD` int(11) DEFAULT NULL,
+  `NA` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `capacidad_instalado`
+--
+
+INSERT INTO `capacidad_instalado` (`MD`, `A`, `ND`, `D`, `TD`, `NA`) VALUES
+(0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `capacidad_modificado`
+--
+
+CREATE TABLE `capacidad_modificado` (
+  `MD` int(11) DEFAULT NULL,
+  `A` int(11) DEFAULT NULL,
+  `ND` int(11) DEFAULT NULL,
+  `D` int(11) DEFAULT NULL,
+  `TD` int(11) DEFAULT NULL,
+  `NA` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `capacidad_modificado`
+--
+
+INSERT INTO `capacidad_modificado` (`MD`, `A`, `ND`, `D`, `TD`, `NA`) VALUES
+(0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `capacidad_probado`
+--
+
+CREATE TABLE `capacidad_probado` (
+  `MD` int(11) DEFAULT NULL,
+  `A` int(11) DEFAULT NULL,
+  `ND` int(11) DEFAULT NULL,
+  `D` int(11) DEFAULT NULL,
+  `TD` int(11) DEFAULT NULL,
+  `NA` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `capacidad_probado`
+--
+
+INSERT INTO `capacidad_probado` (`MD`, `A`, `ND`, `D`, `TD`, `NA`) VALUES
+(0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `capacidad_recuperacion`
+--
+
+CREATE TABLE `capacidad_recuperacion` (
+  `MD` int(11) DEFAULT NULL,
+  `A` int(11) DEFAULT NULL,
+  `ND` int(11) DEFAULT NULL,
+  `D` int(11) DEFAULT NULL,
+  `TD` int(11) DEFAULT NULL,
+  `NA` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `capacidad_recuperacion`
+--
+
+INSERT INTO `capacidad_recuperacion` (`MD`, `A`, `ND`, `D`, `TD`, `NA`) VALUES
+(0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `capacidad_reemplazado`
+--
+
+CREATE TABLE `capacidad_reemplazado` (
+  `MD` int(11) DEFAULT NULL,
+  `A` int(11) DEFAULT NULL,
+  `ND` int(11) DEFAULT NULL,
+  `D` int(11) DEFAULT NULL,
+  `TD` int(11) DEFAULT NULL,
+  `NA` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `capacidad_reemplazado`
+--
+
+INSERT INTO `capacidad_reemplazado` (`MD`, `A`, `ND`, `D`, `TD`, `NA`) VALUES
+(0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `coexistencia`
+--
+
+CREATE TABLE `coexistencia` (
+  `MD` int(11) DEFAULT NULL,
+  `A` int(11) DEFAULT NULL,
+  `ND` int(11) DEFAULT NULL,
+  `D` int(11) DEFAULT NULL,
+  `TD` int(11) DEFAULT NULL,
+  `NA` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `coexistencia`
+--
+
+INSERT INTO `coexistencia` (`MD`, `A`, `ND`, `D`, `TD`, `NA`) VALUES
+(0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `compatibilidad`
+--
+
+CREATE TABLE `compatibilidad` (
+  `MD` int(11) DEFAULT NULL,
+  `A` int(11) DEFAULT NULL,
+  `ND` int(11) DEFAULT NULL,
+  `D` int(11) DEFAULT NULL,
+  `TD` int(11) DEFAULT NULL,
+  `NA` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `compatibilidad`
+--
+
+INSERT INTO `compatibilidad` (`MD`, `A`, `ND`, `D`, `TD`, `NA`) VALUES
+(0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `completitud_funcional`
+--
+
+CREATE TABLE `completitud_funcional` (
+  `MD` int(11) DEFAULT NULL,
+  `A` int(11) DEFAULT NULL,
+  `ND` int(11) DEFAULT NULL,
+  `D` int(11) DEFAULT NULL,
+  `TD` int(11) DEFAULT NULL,
+  `NA` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `completitud_funcional`
+--
+
+INSERT INTO `completitud_funcional` (`MD`, `A`, `ND`, `D`, `TD`, `NA`) VALUES
+(0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comportamiento_temporal`
+--
+
+CREATE TABLE `comportamiento_temporal` (
+  `MD` int(11) DEFAULT NULL,
+  `A` int(11) DEFAULT NULL,
+  `ND` int(11) DEFAULT NULL,
+  `D` int(11) DEFAULT NULL,
+  `TD` int(11) DEFAULT NULL,
+  `NA` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `comportamiento_temporal`
+--
+
+INSERT INTO `comportamiento_temporal` (`MD`, `A`, `ND`, `D`, `TD`, `NA`) VALUES
+(0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `confidencialidad`
+--
+
+CREATE TABLE `confidencialidad` (
+  `MD` int(11) DEFAULT NULL,
+  `A` int(11) DEFAULT NULL,
+  `ND` int(11) DEFAULT NULL,
+  `D` int(11) DEFAULT NULL,
+  `TD` int(11) DEFAULT NULL,
+  `NA` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `confidencialidad`
+--
+
+INSERT INTO `confidencialidad` (`MD`, `A`, `ND`, `D`, `TD`, `NA`) VALUES
+(0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `correcion_funcional`
+--
+
+CREATE TABLE `correcion_funcional` (
+  `MD` int(11) DEFAULT NULL,
+  `A` int(11) DEFAULT NULL,
+  `ND` int(11) DEFAULT NULL,
+  `D` int(11) DEFAULT NULL,
+  `TD` int(11) DEFAULT NULL,
+  `NA` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `correcion_funcional`
+--
+
+INSERT INTO `correcion_funcional` (`MD`, `A`, `ND`, `D`, `TD`, `NA`) VALUES
+(0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `disponibilidad`
+--
+
+CREATE TABLE `disponibilidad` (
+  `MD` int(11) DEFAULT NULL,
+  `A` int(11) DEFAULT NULL,
+  `ND` int(11) DEFAULT NULL,
+  `D` int(11) DEFAULT NULL,
+  `TD` int(11) DEFAULT NULL,
+  `NA` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `disponibilidad`
+--
+
+INSERT INTO `disponibilidad` (`MD`, `A`, `ND`, `D`, `TD`, `NA`) VALUES
+(0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `eficienciadesempeño`
+--
+
+CREATE TABLE `eficienciadesempeño` (
+  `MD` int(11) DEFAULT NULL,
+  `A` int(11) DEFAULT NULL,
+  `ND` int(11) DEFAULT NULL,
+  `D` int(11) DEFAULT NULL,
+  `TD` int(11) DEFAULT NULL,
+  `NA` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `eficienciadesempeño`
+--
+
+INSERT INTO `eficienciadesempeño` (`MD`, `A`, `ND`, `D`, `TD`, `NA`) VALUES
+(0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `encuesta`
+--
+
+CREATE TABLE `encuesta` (
+  `fecha` date DEFAULT current_timestamp(),
+  `idEvaluador` varchar(25) NOT NULL,
+  `tipoSoftware` varchar(50) NOT NULL,
+  `rolEvaluador` varchar(50) NOT NULL,
+  `Pregunta_1` varchar(25) NOT NULL,
+  `Pregunta_2` varchar(25) NOT NULL,
+  `Pregunta_3` varchar(25) NOT NULL,
+  `Pregunta_4` varchar(25) NOT NULL,
+  `Pregunta_5` varchar(25) NOT NULL,
+  `Pregunta_6` varchar(25) NOT NULL,
+  `Pregunta_7` varchar(25) NOT NULL,
+  `Pregunta_8` varchar(25) NOT NULL,
+  `Pregunta_9` varchar(25) NOT NULL,
+  `Pregunta_10` varchar(25) NOT NULL,
+  `Pregunta_11` varchar(255) NOT NULL,
+  `Pregunta_12` varchar(255) NOT NULL,
+  `Pregunta_13` varchar(255) NOT NULL,
+  `Pregunta_14` varchar(255) NOT NULL,
+  `Pregunta_15` varchar(255) NOT NULL,
+  `Pregunta_16` varchar(255) NOT NULL,
+  `Pregunta_17` varchar(255) NOT NULL,
+  `Pregunta_18` varchar(255) NOT NULL,
+  `Pregunta_19` varchar(255) NOT NULL,
+  `Pregunta_20` varchar(255) NOT NULL,
+  `Pregunta_21` varchar(255) NOT NULL,
+  `Pregunta_22` varchar(255) NOT NULL,
+  `Pregunta_23` varchar(255) NOT NULL,
+  `Pregunta_24` varchar(255) NOT NULL,
+  `Pregunta_25` varchar(255) NOT NULL,
+  `Pregunta_26` varchar(255) NOT NULL,
+  `Pregunta_27` varchar(255) NOT NULL,
+  `Pregunta_28` varchar(255) NOT NULL,
+  `Pregunta_29` varchar(255) NOT NULL,
+  `Pregunta_30` varchar(255) NOT NULL,
+  `Pregunta_31` varchar(255) NOT NULL,
+  `Pregunta_32` varchar(255) NOT NULL,
+  `Pregunta_33` varchar(255) NOT NULL,
+  `Pregunta_34` varchar(255) NOT NULL,
+  `Pregunta_35` varchar(255) NOT NULL,
+  `Pregunta_36` varchar(255) NOT NULL,
+  `Pregunta_37` varchar(255) NOT NULL,
+  `Pregunta_38` varchar(255) NOT NULL,
+  `Pregunta_39` varchar(255) NOT NULL,
+  `Pregunta_40` varchar(255) NOT NULL,
+  `Pregunta_41` varchar(255) NOT NULL,
+  `Pregunta_42` varchar(255) NOT NULL,
+  `Pregunta_43` varchar(255) NOT NULL,
+  `Pregunta_44` varchar(255) NOT NULL,
+  `Pregunta_45` varchar(255) NOT NULL,
+  `Pregunta_46` varchar(255) NOT NULL,
+  `Pregunta_47` varchar(255) NOT NULL,
+  `Pregunta_48` varchar(255) NOT NULL,
+  `Pregunta_49` varchar(255) NOT NULL,
+  `Pregunta_50` varchar(255) NOT NULL,
+  `Pregunta_51` varchar(255) NOT NULL,
+  `Pregunta_52` varchar(255) NOT NULL,
+  `Pregunta_53` varchar(255) NOT NULL,
+  `Pregunta_54` varchar(255) NOT NULL,
+  `Pregunta_55` varchar(255) NOT NULL,
+  `Pregunta_56` varchar(255) NOT NULL,
+  `Pregunta_57` varchar(255) NOT NULL,
+  `Pregunta_58` varchar(255) NOT NULL,
+  `Pregunta_59` varchar(255) NOT NULL,
+  `Pregunta_60` varchar(255) NOT NULL,
+  `Pregunta_61` varchar(255) NOT NULL,
+  `Pregunta_62` varchar(255) NOT NULL,
+  `Pregunta_63` varchar(255) NOT NULL,
+  `comentarios` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Disparadores `encuesta`
+--
+DELIMITER $$
+CREATE TRIGGER `TablaSatisfaccion` AFTER INSERT ON `encuesta` FOR EACH ROW begin
 update escala
 	SET MD=(SELECT sum (case when Pregunta_1 = 'MD' then 1 else 0 end +
 						case when Pregunta_2 = 'MD' then 1 else 0 end +
@@ -974,7 +933,7 @@ update escala
 					case when Pregunta_62 = 'NA' then 1 else 0 end +
 					case when Pregunta_63 = 'NA' then 1 else 0 end)
 					from encuesta)
-
+;
 update AdecuacionFuncional
 	SET MD=(SELECT sum (case when Pregunta_1 = 'MD' then 1 else 0 end +
 						case when Pregunta_2 = 'MD' then 1 else 0 end +
@@ -1022,9 +981,9 @@ update AdecuacionFuncional
 					case when Pregunta_4 = 'NA' then 1 else 0 end +	
 					case when Pregunta_5 = 'NA' then 1 else 0 end +
 					case when Pregunta_6 = 'NA' then 1 else 0 end)
-					from encuesta)
+					from encuesta);
 
-update Compatibilidad 
+update EficienciaDesempeño 
 	SET MD=(SELECT sum (case when Pregunta_7 = 'MD' then 1 else 0 end +
 						case when Pregunta_8 = 'MD' then 1 else 0 end +
 						case when Pregunta_9 = 'MD' then 1 else 0 end +
@@ -1071,7 +1030,7 @@ update Compatibilidad
 					case when Pregunta_10 = 'NA' then 1 else 0 end +	
 					case when Pregunta_11 = 'NA' then 1 else 0 end +
 					case when Pregunta_12 = 'NA' then 1 else 0 end)
-					from encuesta)
+					from encuesta);
 
 update Compatibilidad
 	SET MD=(SELECT sum (case when Pregunta_13 = 'MD' then 1 else 0 end +
@@ -1108,7 +1067,7 @@ update Compatibilidad
 					case when Pregunta_14 = 'NA' then 1 else 0 end +
 					case when Pregunta_15 = 'NA' then 1 else 0 end +
 					case when Pregunta_16 = 'NA' then 1 else 0 end)
-					from encuesta)
+					from encuesta);
 
 update Usabilidad 
 	SET MD=(SELECT sum (case when Pregunta_17 = 'MD' then 1 else 0 end +
@@ -1185,7 +1144,7 @@ update Usabilidad
 						case when Pregunta_24 = 'NA' then 1 else 0 end +	
 						case when Pregunta_25 = 'NA' then 1 else 0 end +
 						case when Pregunta_26 = 'NA' then 1 else 0 end)
-						from encuesta)
+						from encuesta);
 
 update Fiabilidad 
 	SET MD=(SELECT sum (case when Pregunta_27 = 'MD' then 1 else 0 end +
@@ -1250,7 +1209,7 @@ update Fiabilidad
 						case when Pregunta_32 = 'NA' then 1 else 0 end +
 						case when Pregunta_33 = 'NA' then 1 else 0 end +
 						case when Pregunta_34 = 'NA' then 1 else 0 end )
-						from encuesta)
+						from encuesta);
 
 update Seguridad
 	SET MD=(SELECT sum (case when Pregunta_35 = 'MD' then 1 else 0 end +
@@ -1327,7 +1286,7 @@ update Seguridad
 						case when Pregunta_42 = 'NA' then 1 else 0 end +
 						case when Pregunta_43 = 'NA' then 1 else 0 end +
 						case when Pregunta_44 = 'NA' then 1 else 0 end)
-						from encuesta)
+						from encuesta);
 
 update Mantenibilidad
 	SET MD=(SELECT sum (case when Pregunta_45 = 'MD' then 1 else 0 end +
@@ -1410,7 +1369,7 @@ update Mantenibilidad
 						case when Pregunta_53 = 'NA' then 1 else 0 end +
 						case when Pregunta_54 = 'NA' then 1 else 0 end +
 						case when Pregunta_55 = 'NA' then 1 else 0 end)
-						from encuesta)
+						from encuesta);
 
 update Portabilidad
 	SET MD=(SELECT sum (case when Pregunta_56 = 'MD' then 1 else 0 end +
@@ -1475,8 +1434,7 @@ update Portabilidad
 						case when Pregunta_61 = 'NA' then 1 else 0 end +
 						case when Pregunta_62 = 'NA' then 1 else 0 end +
 						case when Pregunta_63 = 'NA' then 1 else 0 end )
-						from encuesta)
-
+						from encuesta);
 update completitud_funcional
 	SET MD=(SELECT sum (case when Pregunta_1 = 'MD' then 1 else 0 end +
 						case when Pregunta_2 = 'MD' then 1 else 0 end )
@@ -1500,7 +1458,7 @@ update completitud_funcional
 
 		NA = (select sum (case when Pregunta_1 = 'NA' then 1 else 0 end +
 					case when Pregunta_2 = 'NA' then 1 else 0 end )
-					from encuesta)
+					from encuesta);
 
 update correcion_funcional
 	SET MD=(SELECT sum (case when Pregunta_3 = 'MD' then 1 else 0 end +
@@ -1525,7 +1483,7 @@ update correcion_funcional
 
 		NA = (select sum (case when Pregunta_3 = 'NA' then 1 else 0 end +
 					case when Pregunta_4 = 'NA' then 1 else 0 end )
-					from encuesta)
+					from encuesta);
 
 update pertinencia_funcional
 	SET MD=(SELECT sum (case when Pregunta_5 = 'MD' then 1 else 0 end +
@@ -1550,7 +1508,7 @@ update pertinencia_funcional
 
 		NA = (select sum (case when Pregunta_5 = 'NA' then 1 else 0 end +
 					case when Pregunta_6 = 'NA' then 1 else 0 end )
-					from encuesta)
+					from encuesta);
 
 update comportamiento_temporal
 	SET MD=(SELECT sum (case when Pregunta_7 = 'MD' then 1 else 0 end +
@@ -1575,7 +1533,7 @@ update comportamiento_temporal
 
 		NA = (select sum (case when Pregunta_7 = 'NA' then 1 else 0 end +
 					case when Pregunta_8 = 'NA' then 1 else 0 end )
-					from encuesta)
+					from encuesta);
 
 update utilizacion_recursos
 	SET MD=(SELECT sum (case when Pregunta_9 = 'MD' then 1 else 0 end +
@@ -1600,7 +1558,7 @@ update utilizacion_recursos
 
 		NA = (select sum (case when Pregunta_9 = 'NA' then 1 else 0 end +
 					case when Pregunta_10 = 'NA' then 1 else 0 end )
-					from encuesta)
+					from encuesta);
 
 update capacidad
 	SET MD=(SELECT sum (case when Pregunta_11 = 'MD' then 1 else 0 end +
@@ -1625,7 +1583,7 @@ update capacidad
 
 		NA = (select sum (case when Pregunta_11 = 'NA' then 1 else 0 end +
 					case when Pregunta_12 = 'NA' then 1 else 0 end )
-					from encuesta)
+					from encuesta);
 
 update coexistencia
 	SET MD=(SELECT sum (case when Pregunta_13 = 'MD' then 1 else 0 end +
@@ -1650,7 +1608,7 @@ update coexistencia
 
 		NA = (select sum (case when Pregunta_13 = 'NA' then 1 else 0 end +
 					case when Pregunta_14 = 'NA' then 1 else 0 end )
-					from encuesta)
+					from encuesta);
 
 update interoperabilidad
 	SET MD=(SELECT sum (case when Pregunta_15 = 'MD' then 1 else 0 end +
@@ -1675,7 +1633,7 @@ update interoperabilidad
 
 		NA = (select sum (case when Pregunta_15 = 'NA' then 1 else 0 end +
 					case when Pregunta_16 = 'NA' then 1 else 0 end )
-					from encuesta)
+					from encuesta);
 
 update reconocimiento_adecuacion
 	SET MD=(SELECT sum (case when Pregunta_17 = 'MD' then 1 else 0 end +
@@ -1700,7 +1658,7 @@ update reconocimiento_adecuacion
 
 		NA = (select sum (case when Pregunta_17 = 'NA' then 1 else 0 end +
 					case when Pregunta_18 = 'NA' then 1 else 0 end )
-					from encuesta)
+					from encuesta);
 
 update aprendizabilidad
 	SET MD=(SELECT sum (case when Pregunta_19 = 'MD' then 1 else 0 end +
@@ -1725,7 +1683,7 @@ update aprendizabilidad
 
 		NA = (select sum (case when Pregunta_19 = 'NA' then 1 else 0 end +
 					case when Pregunta_20 = 'NA' then 1 else 0 end )
-					from encuesta)
+					from encuesta);
 
 update operabilidad
 	SET MD=(SELECT sum (case when Pregunta_21 = 'MD' then 1 else 0 end +
@@ -1750,7 +1708,7 @@ update operabilidad
 
 		NA = (select sum (case when Pregunta_21 = 'NA' then 1 else 0 end +
 					case when Pregunta_22 = 'NA' then 1 else 0 end )
-					from encuesta)
+					from encuesta);
 
 update proteccion_errores_usuario
 	SET MD=(SELECT sum (case when Pregunta_23 = 'MD' then 1 else 0 end +
@@ -1775,7 +1733,7 @@ update proteccion_errores_usuario
 
 		NA = (select sum (case when Pregunta_23 = 'NA' then 1 else 0 end +
 					case when Pregunta_24 = 'NA' then 1 else 0 end )
-					from encuesta)
+					from encuesta);
 
 update estetica_interfaz_usuario
 	SET MD=(SELECT sum (case when Pregunta_25 = 'MD' then 1 else 0 end)
@@ -1794,7 +1752,7 @@ update estetica_interfaz_usuario
 					from encuesta),
 
 		NA = (select sum (case when Pregunta_25 = 'NA' then 1 else 0 end)
-					from encuesta)
+					from encuesta);
 
 update accesibilidad
 	SET MD=(SELECT sum (case when Pregunta_26 = 'MD' then 1 else 0 end)
@@ -1813,7 +1771,7 @@ update accesibilidad
 					from encuesta),
 
 		NA = (select sum (case when Pregunta_26 = 'NA' then 1 else 0 end)
-					from encuesta)
+					from encuesta);
 
 update madurez
 	SET MD=(SELECT sum (case when Pregunta_27 = 'MD' then 1 else 0 end +
@@ -1842,7 +1800,7 @@ update madurez
 
 		NA = (SELECT sum (case when Pregunta_27 = 'NA' then 1 else 0 end +
 						case when Pregunta_28 = 'NA' then 1 else 0 end)
-						from encuesta)
+						from encuesta);
 
 update disponibilidad
 	SET MD=(SELECT sum (case when Pregunta_29 = 'MD' then 1 else 0 end +
@@ -1871,7 +1829,7 @@ update disponibilidad
 
 		NA = (SELECT sum (case when Pregunta_29 = 'NA' then 1 else 0 end +
 						case when Pregunta_30 = 'NA' then 1 else 0 end)
-						from encuesta)
+						from encuesta);
 
 update tolerancia_fallos
 	SET MD=(SELECT sum (case when Pregunta_31 = 'MD' then 1 else 0 end +
@@ -1900,7 +1858,7 @@ update tolerancia_fallos
 
 		NA = (SELECT sum (case when Pregunta_31 = 'NA' then 1 else 0 end +
 						case when Pregunta_32 = 'NA' then 1 else 0 end)
-						from encuesta)
+						from encuesta);
 
 update capacidad_recuperacion
 	SET MD=(SELECT sum (case when Pregunta_33 = 'MD' then 1 else 0 end +
@@ -1929,7 +1887,7 @@ update capacidad_recuperacion
 
 		NA = (SELECT sum (case when Pregunta_33 = 'NA' then 1 else 0 end +
 						case when Pregunta_34 = 'NA' then 1 else 0 end )
-						from encuesta)
+						from encuesta);
 
 update confidencialidad
 	SET MD=(SELECT sum (case when Pregunta_35 = 'MD' then 1 else 0 end +
@@ -1958,7 +1916,7 @@ update confidencialidad
 
 		NA = (SELECT sum (case when Pregunta_35 = 'NA' then 1 else 0 end +
 						case when Pregunta_36 = 'NA' then 1 else 0 end )
-						from encuesta)
+						from encuesta);
 
 update integridad
 	SET MD=(SELECT sum (case when Pregunta_37 = 'MD' then 1 else 0 end +
@@ -1987,7 +1945,7 @@ update integridad
 
 		NA = (SELECT sum (case when Pregunta_37 = 'NA' then 1 else 0 end +
 						case when Pregunta_38 = 'NA' then 1 else 0 end )
-						from encuesta)
+						from encuesta);
 
 update no_repudio
 	SET MD=(SELECT sum (case when Pregunta_39 = 'MD' then 1 else 0 end +
@@ -2016,7 +1974,7 @@ update no_repudio
 
 		NA = (SELECT sum (case when Pregunta_39 = 'NA' then 1 else 0 end +
 						case when Pregunta_40 = 'NA' then 1 else 0 end)
-						from encuesta)
+						from encuesta);
 
 update responsabilidad
 	SET MD=(SELECT sum (case when Pregunta_41 = 'MD' then 1 else 0 end +
@@ -2045,7 +2003,7 @@ update responsabilidad
 
 		NA = (SELECT sum (case when Pregunta_41 = 'NA' then 1 else 0 end +
 						case when Pregunta_42 = 'NA' then 1 else 0 end)
-						from encuesta)
+						from encuesta);
 
 update autenticidad
 	SET MD=(SELECT sum (case when Pregunta_43 = 'MD' then 1 else 0 end +
@@ -2074,7 +2032,7 @@ update autenticidad
 
 		NA = (SELECT sum (case when Pregunta_43 = 'NA' then 1 else 0 end +
 						case when Pregunta_44 = 'NA' then 1 else 0 end)
-						from encuesta)
+						from encuesta);
 
 update modularidad
 	SET MD=(SELECT sum (case when Pregunta_45 = 'MD' then 1 else 0 end +
@@ -2103,7 +2061,7 @@ update modularidad
 
 		NA = (SELECT sum (case when Pregunta_45 = 'NA' then 1 else 0 end +
 						case when Pregunta_46 = 'NA' then 1 else 0 end)
-						from encuesta)
+						from encuesta);
 
 update reusabilidad
 	SET MD=(SELECT sum (case when Pregunta_47 = 'MD' then 1 else 0 end +
@@ -2132,7 +2090,7 @@ update reusabilidad
 
 		NA = (SELECT sum (case when Pregunta_47 = 'NA' then 1 else 0 end +
 						case when Pregunta_48 = 'NA' then 1 else 0 end)
-						from encuesta)
+						from encuesta);
 
 update analizabilidad
 	SET MD=(SELECT sum (case when Pregunta_49 = 'MD' then 1 else 0 end +
@@ -2161,7 +2119,7 @@ update analizabilidad
 
 		NA = (SELECT sum (case when Pregunta_49 = 'NA' then 1 else 0 end +
 						case when Pregunta_50 = 'NA' then 1 else 0 end)
-						from encuesta)	
+						from encuesta);	
 
 update capacidad_modificado
 	SET MD=(SELECT sum (case when Pregunta_51 = 'MD' then 1 else 0 end +
@@ -2190,7 +2148,7 @@ update capacidad_modificado
 
 		NA = (SELECT sum (case when Pregunta_51 = 'NA' then 1 else 0 end +
 						case when Pregunta_52 = 'NA' then 1 else 0 end)
-						from encuesta)
+						from encuesta);
 
 update capacidad_probado
 	SET MD=(SELECT sum (case when Pregunta_53 = 'MD' then 1 else 0 end +
@@ -2225,7 +2183,7 @@ update capacidad_probado
 		NA = (SELECT sum (case when Pregunta_53 = 'NA' then 1 else 0 end +
 						case when Pregunta_54 = 'NA' then 1 else 0 end +
 						case when Pregunta_55 = 'NA' then 1 else 0 end)
-						from encuesta)
+						from encuesta);
 
 update adaptabilidad
 	SET MD=(SELECT sum (case when Pregunta_56 = 'MD' then 1 else 0 end +
@@ -2254,7 +2212,7 @@ update adaptabilidad
 
 		NA = (SELECT sum (case when Pregunta_56 = 'NA' then 1 else 0 end +
 						case when Pregunta_57 = 'NA' then 1 else 0 end)
-						from encuesta)
+						from encuesta);
 
 update capacidad_instalado
 	SET MD=(SELECT sum (case when Pregunta_58 = 'MD' then 1 else 0 end +	
@@ -2283,7 +2241,7 @@ update capacidad_instalado
 
 		NA = (SELECT sum (case when Pregunta_58 = 'NA' then 1 else 0 end +	
 						case when Pregunta_59 = 'NA' then 1 else 0 end)
-						from encuesta)
+						from encuesta);
 
 update capacidad_reemplazado
 	SET MD=(SELECT sum (case when Pregunta_60 = 'MD' then 1 else 0 end +
@@ -2324,4 +2282,462 @@ update capacidad_reemplazado
 						case when Pregunta_61 = 'NA' then 1 else 0 end +
 						case when Pregunta_62 = 'NA' then 1 else 0 end +
 						case when Pregunta_63 = 'NA' then 1 else 0 end )
-						from encuesta)
+						from encuesta);                        
+end
+$$
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `escala`
+--
+
+CREATE TABLE `escala` (
+  `MD` int(11) DEFAULT NULL,
+  `A` int(11) DEFAULT NULL,
+  `ND` int(11) DEFAULT NULL,
+  `D` int(11) DEFAULT NULL,
+  `TD` int(11) DEFAULT NULL,
+  `NA` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `escala`
+--
+
+INSERT INTO `escala` (`MD`, `A`, `ND`, `D`, `TD`, `NA`) VALUES
+(0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `estetica_interfaz_usuario`
+--
+
+CREATE TABLE `estetica_interfaz_usuario` (
+  `MD` int(11) DEFAULT NULL,
+  `A` int(11) DEFAULT NULL,
+  `ND` int(11) DEFAULT NULL,
+  `D` int(11) DEFAULT NULL,
+  `TD` int(11) DEFAULT NULL,
+  `NA` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `estetica_interfaz_usuario`
+--
+
+INSERT INTO `estetica_interfaz_usuario` (`MD`, `A`, `ND`, `D`, `TD`, `NA`) VALUES
+(0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `fiabilidad`
+--
+
+CREATE TABLE `fiabilidad` (
+  `MD` int(11) DEFAULT NULL,
+  `A` int(11) DEFAULT NULL,
+  `ND` int(11) DEFAULT NULL,
+  `D` int(11) DEFAULT NULL,
+  `TD` int(11) DEFAULT NULL,
+  `NA` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `fiabilidad`
+--
+
+INSERT INTO `fiabilidad` (`MD`, `A`, `ND`, `D`, `TD`, `NA`) VALUES
+(0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `integridad`
+--
+
+CREATE TABLE `integridad` (
+  `MD` int(11) DEFAULT NULL,
+  `A` int(11) DEFAULT NULL,
+  `ND` int(11) DEFAULT NULL,
+  `D` int(11) DEFAULT NULL,
+  `TD` int(11) DEFAULT NULL,
+  `NA` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `integridad`
+--
+
+INSERT INTO `integridad` (`MD`, `A`, `ND`, `D`, `TD`, `NA`) VALUES
+(0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `interoperabilidad`
+--
+
+CREATE TABLE `interoperabilidad` (
+  `MD` int(11) DEFAULT NULL,
+  `A` int(11) DEFAULT NULL,
+  `ND` int(11) DEFAULT NULL,
+  `D` int(11) DEFAULT NULL,
+  `TD` int(11) DEFAULT NULL,
+  `NA` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `interoperabilidad`
+--
+
+INSERT INTO `interoperabilidad` (`MD`, `A`, `ND`, `D`, `TD`, `NA`) VALUES
+(0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `madurez`
+--
+
+CREATE TABLE `madurez` (
+  `MD` int(11) DEFAULT NULL,
+  `A` int(11) DEFAULT NULL,
+  `ND` int(11) DEFAULT NULL,
+  `D` int(11) DEFAULT NULL,
+  `TD` int(11) DEFAULT NULL,
+  `NA` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `madurez`
+--
+
+INSERT INTO `madurez` (`MD`, `A`, `ND`, `D`, `TD`, `NA`) VALUES
+(0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `mantenibilidad`
+--
+
+CREATE TABLE `mantenibilidad` (
+  `MD` int(11) DEFAULT NULL,
+  `A` int(11) DEFAULT NULL,
+  `ND` int(11) DEFAULT NULL,
+  `D` int(11) DEFAULT NULL,
+  `TD` int(11) DEFAULT NULL,
+  `NA` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `mantenibilidad`
+--
+
+INSERT INTO `mantenibilidad` (`MD`, `A`, `ND`, `D`, `TD`, `NA`) VALUES
+(0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `modularidad`
+--
+
+CREATE TABLE `modularidad` (
+  `MD` int(11) DEFAULT NULL,
+  `A` int(11) DEFAULT NULL,
+  `ND` int(11) DEFAULT NULL,
+  `D` int(11) DEFAULT NULL,
+  `TD` int(11) DEFAULT NULL,
+  `NA` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `modularidad`
+--
+
+INSERT INTO `modularidad` (`MD`, `A`, `ND`, `D`, `TD`, `NA`) VALUES
+(0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `no_repudio`
+--
+
+CREATE TABLE `no_repudio` (
+  `MD` int(11) DEFAULT NULL,
+  `A` int(11) DEFAULT NULL,
+  `ND` int(11) DEFAULT NULL,
+  `D` int(11) DEFAULT NULL,
+  `TD` int(11) DEFAULT NULL,
+  `NA` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `no_repudio`
+--
+
+INSERT INTO `no_repudio` (`MD`, `A`, `ND`, `D`, `TD`, `NA`) VALUES
+(0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `operabilidad`
+--
+
+CREATE TABLE `operabilidad` (
+  `MD` int(11) DEFAULT NULL,
+  `A` int(11) DEFAULT NULL,
+  `ND` int(11) DEFAULT NULL,
+  `D` int(11) DEFAULT NULL,
+  `TD` int(11) DEFAULT NULL,
+  `NA` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `operabilidad`
+--
+
+INSERT INTO `operabilidad` (`MD`, `A`, `ND`, `D`, `TD`, `NA`) VALUES
+(0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pertinencia_funcional`
+--
+
+CREATE TABLE `pertinencia_funcional` (
+  `MD` int(11) DEFAULT NULL,
+  `A` int(11) DEFAULT NULL,
+  `ND` int(11) DEFAULT NULL,
+  `D` int(11) DEFAULT NULL,
+  `TD` int(11) DEFAULT NULL,
+  `NA` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `pertinencia_funcional`
+--
+
+INSERT INTO `pertinencia_funcional` (`MD`, `A`, `ND`, `D`, `TD`, `NA`) VALUES
+(0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `portabilidad`
+--
+
+CREATE TABLE `portabilidad` (
+  `MD` int(11) DEFAULT NULL,
+  `A` int(11) DEFAULT NULL,
+  `ND` int(11) DEFAULT NULL,
+  `D` int(11) DEFAULT NULL,
+  `TD` int(11) DEFAULT NULL,
+  `NA` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `portabilidad`
+--
+
+INSERT INTO `portabilidad` (`MD`, `A`, `ND`, `D`, `TD`, `NA`) VALUES
+(0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `proteccion_errores_usuario`
+--
+
+CREATE TABLE `proteccion_errores_usuario` (
+  `MD` int(11) DEFAULT NULL,
+  `A` int(11) DEFAULT NULL,
+  `ND` int(11) DEFAULT NULL,
+  `D` int(11) DEFAULT NULL,
+  `TD` int(11) DEFAULT NULL,
+  `NA` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `proteccion_errores_usuario`
+--
+
+INSERT INTO `proteccion_errores_usuario` (`MD`, `A`, `ND`, `D`, `TD`, `NA`) VALUES
+(0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `reconocimiento_adecuacion`
+--
+
+CREATE TABLE `reconocimiento_adecuacion` (
+  `MD` int(11) DEFAULT NULL,
+  `A` int(11) DEFAULT NULL,
+  `ND` int(11) DEFAULT NULL,
+  `D` int(11) DEFAULT NULL,
+  `TD` int(11) DEFAULT NULL,
+  `NA` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `reconocimiento_adecuacion`
+--
+
+INSERT INTO `reconocimiento_adecuacion` (`MD`, `A`, `ND`, `D`, `TD`, `NA`) VALUES
+(0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `responsabilidad`
+--
+
+CREATE TABLE `responsabilidad` (
+  `MD` int(11) DEFAULT NULL,
+  `A` int(11) DEFAULT NULL,
+  `ND` int(11) DEFAULT NULL,
+  `D` int(11) DEFAULT NULL,
+  `TD` int(11) DEFAULT NULL,
+  `NA` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `responsabilidad`
+--
+
+INSERT INTO `responsabilidad` (`MD`, `A`, `ND`, `D`, `TD`, `NA`) VALUES
+(0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `reusabilidad`
+--
+
+CREATE TABLE `reusabilidad` (
+  `MD` int(11) DEFAULT NULL,
+  `A` int(11) DEFAULT NULL,
+  `ND` int(11) DEFAULT NULL,
+  `D` int(11) DEFAULT NULL,
+  `TD` int(11) DEFAULT NULL,
+  `NA` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `reusabilidad`
+--
+
+INSERT INTO `reusabilidad` (`MD`, `A`, `ND`, `D`, `TD`, `NA`) VALUES
+(0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `seguridad`
+--
+
+CREATE TABLE `seguridad` (
+  `MD` int(11) DEFAULT NULL,
+  `A` int(11) DEFAULT NULL,
+  `ND` int(11) DEFAULT NULL,
+  `D` int(11) DEFAULT NULL,
+  `TD` int(11) DEFAULT NULL,
+  `NA` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `seguridad`
+--
+
+INSERT INTO `seguridad` (`MD`, `A`, `ND`, `D`, `TD`, `NA`) VALUES
+(0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tolerancia_fallos`
+--
+
+CREATE TABLE `tolerancia_fallos` (
+  `MD` int(11) DEFAULT NULL,
+  `A` int(11) DEFAULT NULL,
+  `ND` int(11) DEFAULT NULL,
+  `D` int(11) DEFAULT NULL,
+  `TD` int(11) DEFAULT NULL,
+  `NA` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `tolerancia_fallos`
+--
+
+INSERT INTO `tolerancia_fallos` (`MD`, `A`, `ND`, `D`, `TD`, `NA`) VALUES
+(0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usabilidad`
+--
+
+CREATE TABLE `usabilidad` (
+  `MD` int(11) DEFAULT NULL,
+  `A` int(11) DEFAULT NULL,
+  `ND` int(11) DEFAULT NULL,
+  `D` int(11) DEFAULT NULL,
+  `TD` int(11) DEFAULT NULL,
+  `NA` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `usabilidad`
+--
+
+INSERT INTO `usabilidad` (`MD`, `A`, `ND`, `D`, `TD`, `NA`) VALUES
+(0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `utilizacion_recursos`
+--
+
+CREATE TABLE `utilizacion_recursos` (
+  `MD` int(11) DEFAULT NULL,
+  `A` int(11) DEFAULT NULL,
+  `ND` int(11) DEFAULT NULL,
+  `D` int(11) DEFAULT NULL,
+  `TD` int(11) DEFAULT NULL,
+  `NA` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `utilizacion_recursos`
+--
+
+INSERT INTO `utilizacion_recursos` (`MD`, `A`, `ND`, `D`, `TD`, `NA`) VALUES
+(0, 0, 0, 0, 0, 0);
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `encuesta`
+--
+ALTER TABLE `encuesta`
+  ADD PRIMARY KEY (`idEvaluador`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

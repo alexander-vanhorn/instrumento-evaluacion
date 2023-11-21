@@ -17,6 +17,10 @@
 
 </head>
 <body>
+<?php
+
+echo "lo detecta";
+?>
     <br><br>
     <div class="alert alert-success" role="alert">
         <h4 class="alert-heading">¡Felicitaciones!</h4>

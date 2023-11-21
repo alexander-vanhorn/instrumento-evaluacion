@@ -1,3 +1,4 @@
+""""
 import dash
 from dash import dcc, html
 import plotly.express as px
@@ -26,10 +27,11 @@ app.layout = html.Div([
 if __name__ == '__main__':
     app.run_server(debug=True)
 
-"""""
+
 pip install dash
 pip install plotly
 pip install pymysql
+"""""
 
 import dash
 from dash import html, dcc
@@ -40,15 +42,14 @@ import pandas as pd
 
 # Conexión a la base de datos MySQL
 conn = pymysql.connect(
-    host='tu_host',
-    port=tu_puerto,
-    user='tu_usuario',
-    password='tu_contraseña',
-    database='tu_base_de_datos'
+    host='localhost',
+    user='root',
+    password='',
+    database='herramienta_evaluacion'
 )
 
 # Consulta a la base de datos
-query = "SELECT columna1, columna2 FROM tabla"
+query = "SELECT * from escala"
 
 # Obtener datos desde MySQL y almacenarlos en un DataFrame de Pandas
 df = pd.read_sql(query, conn)
@@ -61,7 +62,7 @@ app = dash.Dash(__name__)
 
 # Diseño del dashboard
 app.layout = html.Div([
-    html.H1("Dashboard interactivo con Plotly y Dash"),
+    html.H1("Tabla de satisfacción general"),
 
     dcc.Graph(id='graph'),
 
@@ -86,4 +87,4 @@ def update_figure(selected_column):
 if __name__ == '__main__':
     app.run_server(debug=True)
 
-"""
+

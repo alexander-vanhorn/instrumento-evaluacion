@@ -8,7 +8,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
+    <?php
 
+echo "lo detecta";
+?>
     <form action='php\formulario.php' method='POST'>
         <br><br>
         <h1>Instrumento de Evaluación de Software según la Norma ISO 25010</h1>
@@ -16,7 +19,7 @@
         <p>Porfavor evalue los siguientes enunciados:</p>
         
         <div class="form-floating mb-3">
-            <input type="email" name="id" class="form-control" id="floatingInput" placeholder="8-888-888">
+            <input type="email" name="idEvaluador" class="form-control" id="floatingInput" placeholder="8-888-888">
             <label for="floatingInput">Número de identificación (Cédula)</label>
           </div>
           
@@ -1144,14 +1147,14 @@
         <br><br>
         <script src="./js/contador-caracteres.js"></script>
         <div class="form-floating"> 
-            <textarea class="form-control" onkeyup="charcountupdate(this.value)" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" maxlength="500"></textarea>
+            <textarea class="form-control" onkeyup="charcountupdate(this.value)" placeholder="Leave a comment here" name="comentarios" id="floatingTextarea2" style="height: 100px" maxlength="500"></textarea>
             <span id=charcount></span>
             <label for="floatingTextarea2">Comentarios adicionales</label>
           </div>
         
         <br><br>
         <div class="submit">
-            <input class="btn btn-primary" type="submit" value="Finalizar" href="./secciones/confirmacion.html">
+            <input class="btn btn-primary" type="submit" value="Finalizar" href="./secciones/confirmacion.php">
         </div>
         <br>
         <br>
