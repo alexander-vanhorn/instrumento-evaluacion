@@ -15,12 +15,14 @@
     <!--CSS Externo para modificaciones-->
     <link rel="stylesheet" href="../css/estilosconfirm.css">
 
+    <!--Imagen de la barra de título-->
+    <link rel="shortcut icon" href="..\images\logo_utp_color.png" type="image/x-icon">
+
 </head>
 <body>
-<?php
-
-echo "lo detecta";
-?>
+    <?php
+        $x = 5 + 5;
+    ?>
     <br><br>
     <div class="alert alert-success" role="alert">
         <h4 class="alert-heading">¡Felicitaciones!</h4>
