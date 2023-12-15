@@ -10,6 +10,7 @@
     }
     catch(PDOexception $e){
         echo "Problema de conexion : ".$e->getMessage();
+        exit();
     }
 
 

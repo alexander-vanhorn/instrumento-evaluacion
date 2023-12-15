@@ -1,12 +1,12 @@
 <?php
-    include("config\config.php");
 
-    //MYSQL -PDO
-    try{
-        $conn = new PDO("mysql:host=".HOST_NAME.";dbname=".DATABASE, USER_NAME, PASS);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    }
-    catch(PDOexception $e){
-        echo "Problema de conexion : ".$e->getMessage();
-    }
+    $server = "localhost";
+    $database = "herramienta_evaluacion";
+    $username = "root";
+    $password = "";
+
+    define("DB_HOST", "localhost");
+    define("DB", "herramienta_evaluacion");
+    define("DB_USER", "root");
+    define("DB_PASS", "");
 ?>
