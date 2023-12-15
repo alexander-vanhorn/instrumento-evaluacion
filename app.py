@@ -1,90 +1,47 @@
-""""
 import dash
 from dash import dcc, html
 import plotly.express as px
 import pandas as pd
+import mysql.connector
 
-# Carga los datos desde el archivo CSV
-data_url = "https://raw.githubusercontent.com/alexander-vanhorn/instrumento-evaluacion/main/datos/Grado%20de%20satisfacci%C3%B3n%20general.csv"
-df = pd.read_csv(data_url)
-
-# Inicializa la aplicación Dash
-app = dash.Dash(__name__)
-
-# Define una paleta de colores personalizada
-colores = px.colors.qualitative.Set3 
-
-# Define la disposición de la aplicación
-app.layout = html.Div([
-    html.H1("Instrumento de evaluación de calidad de software"),
-    dcc.Graph(
-        id='pie-chart',
-        figure=px.pie(df, names='MD;A;ND;D;TD;NA', title='Distribución de Respuestas')
-    )
-])
-
-
-if __name__ == '__main__':
-    app.run_server(debug=True)
-
-
-pip install dash
-pip install plotly
-pip install pymysql
-"""""
-
-import dash
-from dash import html, dcc
-from dash.dependencies import Input, Output
-import plotly.express as px
-import pymysql
-import pandas as pd
-
-# Conexión a la base de datos MySQL
-conn = pymysql.connect(
-    host='localhost',
-    user='root',
-    password='',
-    database='herramienta_evaluacion'
+# Establecer la conexión a la base de datos MySQL
+conexion = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="",
+    database="herramienta_evaluacion"
 )
 
-# Consulta a la base de datos
-query = "SELECT * from escala"
+# Consulta SQL para obtener los datos
+consulta_sql = "SELECT * FROM escala"
 
-# Obtener datos desde MySQL y almacenarlos en un DataFrame de Pandas
-df = pd.read_sql(query, conn)
+# Utilizar pandas para leer datos desde MySQL
+df = pd.read_sql(consulta_sql, con=conexion)
 
 # Cerrar la conexión a la base de datos
-conn.close()
+conexion.close()
+
+# Obtener los encabezados de las columnas desde la primera fila
+column_names = df.iloc[0]
+
+# Definir los datos desde la segunda fila en adelante
+df = df.iloc[1:]
+df.columns = column_names
+
+# Convertir los datos a valores numéricos (asumiendo que son strings)
+df = df.apply(pd.to_numeric)
 
 # Inicializar la aplicación Dash
 app = dash.Dash(__name__)
 
-# Diseño del dashboard
+# Definir el layout de la aplicación
 app.layout = html.Div([
-    html.H1("Tabla de satisfacción general"),
-
-    dcc.Graph(id='graph'),
-
-    dcc.Dropdown(
-        id='dropdown',
-        options=[
-            {'label': columna, 'value': columna} for columna in df.columns
-        ],
-        value=df.columns[0]  # Valor por defecto para la primera columna
+    dcc.Graph(
+        id='pie-chart',
+        figure=px.pie(df, values=df.columns, names=['Muy de acuerdo','Acuerdo','Ni acuerdo, ni en desacuerdo','Desacuerdo','Totalmente Desacuerdo','No Apica'], title='Escala de satisfacción general')
     )
 ])
 
-# Actualización del gráfico basado en la selección del usuario
-@app.callback(
-    Output('graph', 'figure'),
-    [Input('dropdown', 'value')]
-)
-def update_figure(selected_column):
-    fig = px.bar(df, x=selected_column, y='otra_columna', title='Gráfico de barras')
-    return fig
-
+# Ejecutar la aplicación
 if __name__ == '__main__':
     app.run_server(debug=True)
-
-
