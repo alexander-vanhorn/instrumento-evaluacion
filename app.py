@@ -36,12 +36,34 @@ app = dash.Dash(__name__)
 
 # Definir el layout de la aplicación
 app.layout = html.Div([
-    dcc.Graph(
-        id='pie-chart',
-        figure=px.pie(df, values=df.columns, names=['Muy de acuerdo','Acuerdo','Ni acuerdo, ni en desacuerdo','Desacuerdo','Totalmente Desacuerdo','No Apica'], title='Escala de satisfacción general')
-    )
+    dcc.Tabs(id='tabs-example', value='tab-1', children=[
+        dcc.Tab(label='Pestaña 1', value='tab-1'),
+        dcc.Tab(label='Pestaña 2', value='tab-2'),
+    ]),
+    html.Div(id='tabs-content-example')
 ])
+
+@app.callback(dash.dependencies.Output('tabs-content-example', 'children'),
+              [dash.dependencies.Input('tabs-example', 'value')])
+def render_content(tab):
+    if tab == 'tab-1':
+        return html.Div([
+            html.H3('Contenido de la pestaña 1'),
+            dcc.Graph(
+                id='pie-chart',
+                figure=px.pie(df, values=df.columns, names=['Muy de acuerdo','Acuerdo','Ni acuerdo, ni en desacuerdo','Desacuerdo','Totalmente Desacuerdo','No Apica'], title='Escala de satisfacción general')
+            )
+        ])
+    elif tab == 'tab-2':
+        return html.Div([
+            html.H3('Contenido de la pestaña 2'),
+            dcc.Graph(
+                id='pie-chart',
+                figure=px.pie(df, values=df.columns, names=['Muy de acuerdo','Acuerdo','Ni acuerdo, ni en desacuerdo','Desacuerdo','Totalmente Desacuerdo','No Apica'], title='Escala de satisfacción general')
+            )
+        ])
 
 # Ejecutar la aplicación
 if __name__ == '__main__':
     app.run_server(debug=True)
+
