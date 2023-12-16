@@ -119,7 +119,7 @@
 
 
         if($stmt->execute()) {
-          echo "<script>alert('Registrado  exitosamente.');</script>";
+          echo "<script>alert('Registrado exitosamente.');</script>";
             echo ('<meta http-equiv="refresh" content="1; URL=..\view\confirmacion.php" />');
             
         }else{
